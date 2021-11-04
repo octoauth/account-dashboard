@@ -1,4 +1,6 @@
-# octoauth-dashboard
+# OctoAuth Dashboard
+
+*A dashboard to manage octoauth accounts (and applications for developers)*
 
 ## Project setup
 ```

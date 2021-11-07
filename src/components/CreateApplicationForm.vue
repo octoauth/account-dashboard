@@ -7,6 +7,18 @@
       </v-card-title>
 
       <v-card-text style="margin-top: 2em">
+        <div style="display: flex">
+          <Icon v-model="application.icon_uri" :editable="true"/>
+
+          <v-text-field
+            label="Application name"
+            prepend-icon="mdi-label"
+            v-model="application.name"
+            outlined
+            required
+          />
+        </div>
+        
         <v-text-field
           label="Client ID"
           prepend-icon="mdi-identifier"
@@ -14,21 +26,7 @@
           outlined
           required
         />
-        <v-text-field
-          label="Application name"
-          prepend-icon="mdi-label"
-          v-model="application.name"
-          outlined
-          required
-        />
-        <v-file-input
-          label="Application icon"
-          prepend-icon="mdi-image-search"
-          append-icon="mdi-paperclip"
-          @change="uploadImage()"
-          outlined
-          required
-        />
+
         <v-textarea
           label="Application description"
           prepend-icon="mdi-text-long"
@@ -47,7 +45,10 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon'
+
 export default {
+  components: {Icon},
   data() {
     return {
       application: {
@@ -61,13 +62,7 @@ export default {
   methods: {
     onSubmit() {
         this.$store.dispatch('application/createApplication', this.application)
-        .then(application=>this.$router.push({name: 'ManageApplication', params: {applicationUid: application.uid}}));
-    },
-    uploadImage() {
-      const inputFile = document.querySelector("input[type=file]");
-      this.$store
-        .dispatch("cdn/uploadFile", inputFile.files[0])
-        .then((response) => (this.application.icon_uri = response.file_url));
+        .then(application=>this.$router.push({name: 'ManageApplication', params: {applicationUID: application.uid}}));
     },
   },
 };

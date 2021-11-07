@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import AccountDetails from '@/views/account/AccountDetails'
-import AccountSecurity from '@/views/account/AccountSecurity'
+import AccountSessions from '@/views/security/AccountSessions'
+import Groups from '@/views/groups/BrowseGroups'
 import BrowseMyApplications from '@/views/developers/BrowseMyApplications'
 import ManageApplication from '@/views/developers/ManageApplication'
 
@@ -19,9 +20,14 @@ const routes = [
     component: AccountDetails
   },
   {
-    path: '/account/security',
+    path: '/groups',
+    name: 'Groups',
+    component: Groups
+  },
+  {
+    path: '/security',
     name: 'AccountSecurity',
-    component: AccountSecurity
+    component: AccountSessions
   },
   {
     path: '/developer/applications',
@@ -29,7 +35,7 @@ const routes = [
     component: BrowseMyApplications
   },
   {
-    path: '/developer/applications/:applicationUid',
+    path: '/developer/applications/:applicationUID',
     name: 'ManageApplication',
     component: ManageApplication
   }

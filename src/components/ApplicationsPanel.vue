@@ -24,7 +24,7 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn outlined rounded text color="accent" :to="{name: 'ManageApplication', params: {applicationUid: application.uid}}"> manage </v-btn>
+        <v-btn outlined rounded text color="accent" :to="{name: 'ManageApplication', params: {applicationUID: application.uid}}"> manage </v-btn>
       </v-card-actions>
     </v-card>
   </div>

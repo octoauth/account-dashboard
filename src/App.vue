@@ -3,7 +3,8 @@
     <v-app>
       <v-app-bar color="black" clipped-left app>
         <img
-          src="http://localhost:3000/assets/octoauth.png"
+          src="@/assets/logo.png"
+          style="margin-right: 0.5em"
           width="30"
           height="30"
           alt=""
@@ -49,6 +50,7 @@ export default {
           icon: "mdi-account-circle",
           view: "AccountDetails",
         },
+        {title: 'Groups', icon: 'mdi-account-group', view: 'Groups'},
         { title: "Security", icon: "mdi-shield", view: "AccountSecurity" },
         {
           title: "My applications",

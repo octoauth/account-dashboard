@@ -1,14 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-import application from './application'
-import cdn from './cdn'
+import fileserver from "./fileserver";
+import accounts from "./accounts";
+import application from "./application";
+import sessions from "./sessions";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
+    fileserver,
+    accounts,
     application,
-    cdn
-  }
-})
+    sessions,
+  },
+});

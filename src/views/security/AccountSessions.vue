@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <v-container>
     <h2>Account sessions</h2>
 
     <p v-if="sessions.length === 0">No sessions opened to your account.</p>
@@ -32,7 +32,7 @@
         </tbody>
       </template>
     </v-simple-table>
-  </main>
+  </v-container>
 </template>
 
 <script>

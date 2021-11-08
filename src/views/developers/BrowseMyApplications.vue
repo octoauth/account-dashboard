@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <v-container>
     <h2>Browse my applications</h2>
     <p>
         On this page, you can declare and manage your applications that needs to interract with users' <strong color="logo">OctoAuth</strong> accounts.
@@ -12,7 +12,7 @@
     <v-dialog v-model="createAppDialogOpened" width="500">
       <create-application-form />
     </v-dialog>
-  </main>
+  </v-container>
 </template>
 
 <script>

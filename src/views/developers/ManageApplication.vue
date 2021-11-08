@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <v-container>
     <h2>Manage application</h2>
 
     <fieldset class="actions-area">
@@ -89,7 +89,7 @@
     </fieldset>
 
     <div v-if="!application">Application loading</div>
-  </main>
+  </v-container>
 </template>
 
 <script>
@@ -156,36 +156,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-fieldset.actions-area {
-  padding: 1em;
-  border-radius: 5px;
-}
-
-fieldset.actions-area:not(:first-child) {
-  margin-top: 1em;
-}
-
-fieldset.actions-area > legend {
-  margin-left: 2em;
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-.action-field {
-  display: flex;
-  align-items: center;
-  padding: 0.7em;
-  justify-content: space-between;
-}
-
-.action-field p {
-  margin-bottom: 0;
-}
-
-.action-field .v-btn {
-  width: 200px;
-  margin-left: 3em;
-}
-</style>

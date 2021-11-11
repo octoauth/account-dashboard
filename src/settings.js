@@ -1,5 +1,8 @@
 
 export default {
-    octoauthBaseURL: "http://localhost:7000",
-    fileserverBaseUrl: "http://localhost:5018"
+    octoauthBaseURL: "https://auth.sortify.local",
+    octoauthClientId: "octoauth",
+    octoauthScopes: ["profile:read", "groups:read"],
+
+    fileserverBaseUrl: "https://cdn.sortify.local"
 }

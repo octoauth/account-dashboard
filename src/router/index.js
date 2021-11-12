@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import octoauthClient from '@/clients/octoauth'
 
 import AccountDetails from '@/views/account/AccountDetails'
 import AccountSessions from '@/views/security/AccountSessions'
@@ -12,7 +13,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/developer/applications'
+    redirect: '/account'
   },
   {
     path: '/account',
@@ -45,6 +46,13 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach(async (to, from, next) => {
+    const isAuthorized = await octoauthClient.isAuthorized.waitValue()
+
+    if (isAuthorized) next()
+    else octoauthClient.authorize()
 })
 
 export default router

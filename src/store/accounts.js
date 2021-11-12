@@ -16,6 +16,10 @@ export default {
             .then(account=>{
                 commit('setAccount', account);
             })
+        },
+        logout({commit}){
+            octoauthClient.revokeGrant();
+            commit('setAccount', null);
         }
     }
 }

@@ -1,6 +1,18 @@
 <template>
   <div>
-    <v-app>
+    <!-- Loading screen -->
+    <v-app v-if="!isAuthorized" >
+      <main style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+        <h1 style="font-size: 3em">
+          <span color="logo" style="font-size: 1.2em">OctoAuth </span>
+          <span style="font-weight: normal">ACCOUNT</span>
+        </h1>
+      </main>
+      
+    </v-app>
+
+    <!-- Displayed once authorized -->
+    <v-app v-if="isAuthorized">
       <!-- main navigation (top) -->
       <v-app-bar color="black" clipped-left app>
         <img
@@ -10,7 +22,10 @@
           height="30"
           alt=""
         />
-        <h1 color="logo" style="font-size: 1.3em">OctoAuth</h1>
+        <h1 style="font-size: 1.3em">
+          <span color="logo" style="font-size: 1.2em">OctoAuth </span> 
+          <span style="color: white; font-weight: normal">ACCOUNT</span>
+        </h1>
         <v-spacer></v-spacer>
         <v-btn text dark @click="logout()">
           <v-icon>mdi-power</v-icon> Logout
@@ -49,11 +64,12 @@
 
 <script>
 import settings from '@/settings'
+import octoauthClient from '@/clients/octoauth'
 
 export default {
   data() {
     return {
-      mini: true,
+      isAuthorized: false,
       items: [
         {
           title: "Account info",
@@ -70,8 +86,12 @@ export default {
       ],
     };
   },
+  mounted(){
+    octoauthClient.isAuthorized.addObserver(isAuthorized=>this.isAuthorized = isAuthorized);
+  },
   methods: {
     logout(){
+      this.$store.dispatch("accounts/logout");
       window.location.href = settings.octoauthBaseURL + '/logout';
     }
   }
